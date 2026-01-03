@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical Skills & Competencies of Harris Kristanto - QA Specialist">
+    <title>Harris Kristanto | Technical Competencies</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            /* Light Theme */
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            
+            --text-primary: #1e293b;   /* Slate 800 */
+            --text-secondary: #475569; /* Slate 600 */
+            
+            /* Strategic Navy */
+            --primary-color: #1e3a8a;  /* Deep Navy Blue */
+            --primary-hover: #172554;  /* Darker Navy */
+            --accent-subtle: #e0e7ff;  /* Light Indigo wash */
+            
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --nav-height: 80px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;     /* Slate 900 */
+            --bg-secondary: #1e293b;   /* Slate 800 */
+            --bg-card: #1e293b;
+            
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            
+            --primary-color: #60a5fa; 
+            --primary-hover: #3b82f6;
+            --accent-subtle: rgba(96, 165, 250, 0.1);
+            
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+        }
+
+        /* --- RESET & TYPOGRAPHY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: var(--nav-height);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        img { width: 100%; height: auto; display: block; object-fit: cover; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background-color: var(--bg-card); /* Adaptive background */
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .back-home {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-home:hover { color: var(--primary-color); }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--border-color);
+        }
+        
+        .logo span { color: var(--primary-color); }
+
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-center a {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .nav-center a:hover { color: var(--primary-color); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Language Switcher Pill Style */
+        .lang-pills {
+            display: flex;
+            background-color: var(--bg-primary);
+            padding: 4px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            gap: 2px;
+        }
+
+        .lang-pill {
+            background: none;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .lang-pill:hover {
+            color: var(--primary-color);
+            background-color: var(--accent-subtle);
+        }
+
+        .lang-pill.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        [data-theme="dark"] .lang-pill.active { color: #0f172a; }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+            text-align: left;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav-center { display: none; } /* Hide links on smaller screens */
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .nav-left { gap: 0.5rem; }
+            .logo { display: none; } /* Simplify header on mobile */
+        }
+
+        /* --- HERO --- */
+        .page-hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--accent-subtle) 100%);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* --- SECTION 1: AI (Layout: Text Left, Image Right) --- */
+        .ai-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ai-image {
+            background-color: var(--bg-primary);
+            min-height: 350px;
+        }
+        
+        .ai-image img { height: 100%; }
+
+        /* --- SECTION 2: LANGUAGE --- */
+        .language-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-box h3 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.25rem; }
+        .stat-box p { font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; letter-spacing: 1px; }
+
+        .cert-container {
+            background-color: var(--bg-primary);
+            border: 2px dashed var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* --- SECTION 3: INDUSTRY TOOLS --- */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tool-img {
+            height: 200px;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tool-info {
+            padding: 1.5rem;
+        }
+
+        .tool-info h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-info p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Back Button, Navigation, Lang Switch, Theme Toggle -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="portfolio.html" class="back-home">
+                    <span>&larr;</span> <span data-i18n="nav_back">Back to Home</span>
+                </a>
+                <a href="#" class="logo">Harris<span>.</span>Skills</a>
+            </div>
+
+            <nav class="nav-center">
+                <a href="#ai" data-i18n="nav_ai">AI & Tech</a>
+                <a href="#language" data-i18n="nav_lang">Language</a>
+                <a href="#qa" data-i18n="nav_qa">QA Instruments</a>
+            </nav>
+
+            <div class="nav-right">
+                <!-- Language Switcher -->
+                <div class="lang-pills">
+                    <button class="lang-pill active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    <button class="lang-pill" onclick="changeLanguage('zh')" data-lang="zh">繁中</button>
+                    <button class="lang-pill" onclick="changeLanguage('id')" data-lang="id">ID</button>
+                </div>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Area -->
+    <div class="page-hero">
+        <h1 data-i18n="hero_title">Technical Competencies</h1>
+        <p data-i18n="hero_sub">Specialized Skill Set in AI, Multilingual Communication, and QA Metrology</p>
+    </div>
+
+    <div class="container">
+        
+        <!-- SECTION 1: Technical AI -->
+        <section id="ai" style="margin-bottom: 6rem; scroll-margin-top: 100px;">
+            <div class="section-header">
+                <h2 data-i18n="sect_ai_title">Artificial Intelligence</h2>
+                <p data-i18n="sect_ai_sub">Local Deployment & Optimization</p>
+            </div>
+            <div class="card grid-2" style="gap: 0;">
+                <div class="ai-content">
+                    <h3 style="margin-bottom: 1rem;" data-i18n="ai_card_title">Local LLM Operations</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;" data-i18n="ai_card_desc">
+                        I specialize in running and fine-tuning Large Language Models (LLMs) locally to ensure data privacy and reduced latency. My study focuses on the intersection of AI logic and manufacturing reliability.
+                    </p>
+                    <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                        <li data-i18n="ai_li1"><strong>Environment:</strong> Local deployment using Ollama & LM Studio.</li>
+                        <li data-i18n="ai_li2"><strong>Models:</strong> Llama 3, Mistral, and specialized quantized models.</li>
+                        <li data-i18n="ai_li3"><strong>Application:</strong> Python automation for data preprocessing and defect classification logic.</li>
+                    </ul>
+                </div>
+                <div class="ai-image">
+                    <!-- AI Environment Image -->
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1000&auto=format&fit=crop" alt="AI Development Environment">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: Language -->
+        <section id="language" style="margin-bottom: 6rem; scroll-margin-top: 100px;">
+            <div class="section-header">
+                <h2 data-i18n="sect_lang_title">Language & Interpreting</h2>
+                <p data-i18n="sect_lang_sub">Bridging Technical Gaps in Manufacturing</p>
+            </div>
+            
+            <!-- Stats Row -->
+            <div class="language-stats">
+                <div class="stat-box">
+                    <h3>910</h3>
+                    <p data-i18n="stat_toeic">TOEIC Gold Certificate</p>
+                </div>
+                <div class="stat-box">
+                    <h3 data-i18n="stat_years_val">4 Years</h3>
+                    <p data-i18n="stat_years_label">Living in Taiwan</p>
+                </div>
+                <div class="stat-box">
+                    <h3 data-i18n="stat_fluent_val">Fluent</h3>
+                    <p data-i18n="stat_fluent_label">Mandarin / English / Indo</p>
+                </div>
+            </div>
+
+            <!-- Main Language Content -->
+            <div class="card" style="padding: 2.5rem;">
+                <div class="grid-2">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);" data-i18n="lang_card_title">Technical Interpreting Experience</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;" data-i18n="lang_card_desc">
+                            My four years of immersion in Taiwan have allowed me to master technical Mandarin suited for the manufacturing floor. I facilitate high-level communication between international management and local engineering teams, ensuring safety protocols and specifications are accurately conveyed.
+                        </p>
+                    </div>
+                    <!-- Certificate Preview -->
+                    <div class="cert-container">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;" data-i18n="cert_title">TOEIC Certificate Preview</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--text-secondary);" data-i18n="cert_score">Official Score Report: 910/990</p>
+                        <button class="btn" style="background-color: var(--primary-color); color: white; border: none; padding: 0.75rem 2rem; border-radius: 4px; cursor: pointer;" data-i18n="btn_view_pdf">View PDF Document</button>
+                    </div>
+                </div>
+
+                <h4 style="margin: 2rem 0 1rem 0; padding-top: 1rem; border-top: 1px solid var(--border-color); color: var(--text-secondary);" data-i18n="gallery_title">Interpreting & On-Site Gallery</h4>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=400" alt="Conference Room"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=400" alt="Factory Discussion"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400" alt="Team Meeting"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=400" alt="Site Visit"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 3: Industry Skills -->
+        <section id="qa" style="scroll-margin-top: 100px;">
+            <div class="section-header">
+                <h2 data-i18n="sect_qa_title">QA Instrumentation</h2>
+                <p data-i18n="sect_qa_sub">Metrology & Precision Measurement</p>
+            </div>
+            
+            <div class="tools-grid">
+                
+                <!-- 1. Vernier Caliper -->
+                <div class="tool-card">
+                    <div class="tool-img">
+                        <img src="https://images.unsplash.com/photo-1516937941344-00b4ec05660b?q=80&w=600&auto=format&fit=crop" alt="Vernier Caliper">
+                    </div>
+                    <div class="tool-info">
+                        <h4 data-i18n="tool1_title">Vernier Caliper</h4>
+                        <p data-i18n="tool1_desc">Standard measurement for external dimensions, internal diameters, and depth with 0.02mm precision.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Micrometer -->
+                <div class="tool-card">
+                    <div class="tool-img">
+                        <img src="https://images.unsplash.com/photo-1565514020176-793540306385?q=80&w=600&auto=format&fit=crop" alt="Micrometer">
+                    </div>
+                    <div class="tool-info">
+                        <h4 data-i18n="tool2_title">Inner/Outer Micrometer</h4>
+                        <p data-i18n="tool2_desc">Used for high-precision thickness and diameter checks where caliper tolerance is insufficient.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Contour Measurement -->
+                <div class="tool-card">
+                    <div class="tool-img">
+                        <img src="https://images.unsplash.com/photo-1622675363311-ac05972802f0?q=80&w=600&auto=format&fit=crop" alt="Contour Instrument">
+                    </div>
+                    <div class="tool-info">
+                        <h4 data-i18n="tool3_title">Contour Instrument</h4>
+                        <p data-i18n="tool3_desc">Profile analysis for complex curvatures and surface roughness (Ra/Rz) verification.</p>
+                    </div>
+                </div>
+
+                <!-- 4. 2.5D Vision -->
+                <div class="tool-card">
+                    <div class="tool-img">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop" alt="Vision Measuring">
+                    </div>
+                    <div class="tool-info">
+                        <h4 data-i18n="tool4_title">2.5D Vision Measuring</h4>
+                        <p data-i18n="tool4_desc">Non-contact optical measurement for delicate components requiring high geometric accuracy.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; padding: 4rem 0; color: var(--text-secondary); font-size: 0.9rem; background-color: var(--bg-primary); border-top: 1px solid var(--border-color); margin-top: 4rem;">
+        &copy; 2026 Harris Kristanto. All rights reserved.
+    </footer>
+
+    <!-- JavaScript for Language & Theme -->
+    <script>
+        // --- Translation Data ---
+        const translations = {
+            en: {
+                nav_back: "Back to Home", nav_ai: "AI & Tech", nav_lang: "Language", nav_qa: "QA Instruments",
+                hero_title: "Technical Competencies", hero_sub: "Specialized Skill Set in AI, Multilingual Communication, and QA Metrology",
+                sect_ai_title: "Artificial Intelligence", sect_ai_sub: "Local Deployment & Optimization",
+                ai_card_title: "Local LLM Operations",
+                ai_card_desc: "I specialize in running and fine-tuning Large Language Models (LLMs) locally to ensure data privacy and reduced latency. My study focuses on the intersection of AI logic and manufacturing reliability.",
+                ai_li1: "<strong>Environment:</strong> Local deployment using Ollama & LM Studio.",
+                ai_li2: "<strong>Models:</strong> Llama 3, Mistral, and specialized quantized models.",
+                ai_li3: "<strong>Application:</strong> Python automation for data preprocessing and defect classification logic.",
+                sect_lang_title: "Language & Interpreting", sect_lang_sub: "Bridging Technical Gaps in Manufacturing",
+                stat_toeic: "TOEIC Gold Certificate", stat_years_val: "4 Years", stat_years_label: "Living in Taiwan",
+                stat_fluent_val: "Fluent", stat_fluent_label: "Mandarin / English / Indo",
+                lang_card_title: "Technical Interpreting Experience",
+                lang_card_desc: "My four years of immersion in Taiwan have allowed me to master technical Mandarin suited for the manufacturing floor. I facilitate high-level communication between international management and local engineering teams, ensuring safety protocols and specifications are accurately conveyed.",
+                cert_title: "TOEIC Certificate Preview", cert_score: "Official Score Report: 910/990", btn_view_pdf: "View PDF Document",
+                gallery_title: "Interpreting & On-Site Gallery",
+                sect_qa_title: "QA Instrumentation", sect_qa_sub: "Metrology & Precision Measurement",
+                tool1_title: "Vernier Caliper", tool1_desc: "Standard measurement for external dimensions, internal diameters, and depth with 0.02mm precision.",
+                tool2_title: "Inner/Outer Micrometer", tool2_desc: "Used for high-precision thickness and diameter checks where caliper tolerance is insufficient.",
+                tool3_title: "Contour Instrument", tool3_desc: "Profile analysis for complex curvatures and surface roughness (Ra/Rz) verification.",
+                tool4_title: "2.5D Vision Measuring", tool4_desc: "Non-contact optical measurement for delicate components requiring high geometric accuracy."
+            },
+            zh: {
+                nav_back: "返回首頁", nav_ai: "AI 與科技", nav_lang: "語言能力", nav_qa: "品保儀器",
+                hero_title: "專業技術能力", hero_sub: "AI應用、多語言溝通與QA計量學的專業技能組合",
+                sect_ai_title: "人工智慧", sect_ai_sub: "在地化部署與優化",
+                ai_card_title: "在地化大型語言模型操作",
+                ai_card_desc: "我專精於在地化運行與微調大型語言模型 (LLMs)，以確保資料隱私並降低延遲。我的研究專注於AI邏輯與製造可靠性的結合。",
+                ai_li1: "<strong>環境：</strong> 使用 Ollama 與 LM Studio 進行在地部署。",
+                ai_li2: "<strong>模型：</strong> Llama 3, Mistral 與專用量化模型。",
+                ai_li3: "<strong>應用：</strong> 使用 Python 自動化進行資料預處理與缺陷分類邏輯。",
+                sect_lang_title: "語言與口譯", sect_lang_sub: "連結製造現場的技術鴻溝",
+                stat_toeic: "TOEIC 金色證書", stat_years_val: "4 年", stat_years_label: "旅居台灣",
+                stat_fluent_val: "流利", stat_fluent_label: "中文 / 英文 / 印尼文",
+                lang_card_title: "技術口譯經驗",
+                lang_card_desc: "我在台灣四年的深度生活經驗，使我掌握了適合製造現場的技術中文。我協助國際管理層與在地工程團隊進行高層次溝通，確保安全協定與規格能準確傳達。",
+                cert_title: "TOEIC 證書預覽", cert_score: "官方成績報告: 910/990", btn_view_pdf: "查看 PDF 文件",
+                gallery_title: "口譯與現場圖集",
+                sect_qa_title: "QA 量測儀器", sect_qa_sub: "計量學與精密測量",
+                tool1_title: "游標卡尺", tool1_desc: "用於測量外徑、內徑與深度，精度達 0.02mm 的標準測量工具。",
+                tool2_title: "內/外徑分厘卡", tool2_desc: "用於卡尺公差不足時的高精度厚度與直徑檢查。",
+                tool3_title: "輪廓測量儀", tool3_desc: "用於複雜曲面輪廓分析與表面粗糙度 (Ra/Rz) 驗證。",
+                tool4_title: "2.5D 影像測量儀", tool4_desc: "用於需要高幾何精度的精密零件之非接觸式光學測量。"
+            },
+            id: {
+                nav_back: "Kembali ke Beranda", nav_ai: "AI & Teknologi", nav_lang: "Bahasa", nav_qa: "Instrumen QA",
+                hero_title: "Kompetensi Teknis", hero_sub: "Keahlian Khusus dalam AI, Komunikasi Multibahasa, dan Metrologi QA",
+                sect_ai_title: "Kecerdasan Buatan (AI)", sect_ai_sub: "Penyebaran & Optimasi Lokal",
+                ai_card_title: "Operasi LLM Lokal",
+                ai_card_desc: "Saya mengkhususkan diri dalam menjalankan dan menyempurnakan Large Language Models (LLM) secara lokal untuk memastikan privasi data. Studi saya berfokus pada persimpangan logika AI dan keandalan manufaktur.",
+                ai_li1: "<strong>Lingkungan:</strong> Penyebaran lokal menggunakan Ollama & LM Studio.",
+                ai_li2: "<strong>Model:</strong> Llama 3, Mistral, dan model terkuantisasi khusus.",
+                ai_li3: "<strong>Aplikasi:</strong> Otomasi Python untuk pra-pemrosesan data dan logika klasifikasi cacat.",
+                sect_lang_title: "Bahasa & Penerjemahan", sect_lang_sub: "Menjembatani Kesenjangan Teknis di Manufaktur",
+                stat_toeic: "Sertifikat Emas TOEIC", stat_years_val: "4 Tahun", stat_years_label: "Tinggal di Taiwan",
+                stat_fluent_val: "Lancar", stat_fluent_label: "Mandarin / Inggris / Indonesia",
+                lang_card_title: "Pengalaman Penerjemahan Teknis",
+                lang_card_desc: "Empat tahun pengalaman saya di Taiwan memungkinkan saya menguasai bahasa Mandarin teknis untuk lantai pabrik. Saya memfasilitasi komunikasi tingkat tinggi antara manajemen internasional dan tim teknik lokal.",
+                cert_title: "Pratinjau Sertifikat TOEIC", cert_score: "Laporan Skor Resmi: 910/990", btn_view_pdf: "Lihat Dokumen PDF",
+                gallery_title: "Galeri Penerjemahan & Lapangan",
+                sect_qa_title: "Instrumentasi QA", sect_qa_sub: "Metrologi & Pengukuran Presisi",
+                tool1_title: "Jangka Sorong", tool1_desc: "Pengukuran standar untuk dimensi luar, diameter dalam, dan kedalaman dengan presisi 0,02mm.",
+                tool2_title: "Mikrometer Dalam/Luar", tool2_desc: "Digunakan untuk pemeriksaan ketebalan dan diameter presisi tinggi.",
+                tool3_title: "Instrumen Kontur", tool3_desc: "Analisis profil untuk kelengkungan kompleks dan verifikasi kekasaran permukaan (Ra/Rz).",
+                tool4_title: "Pengukuran Visi 2.5D", tool4_desc: "Sistem pengukuran optik non-kontak untuk komponen halus yang memerlukan akurasi geometris tinggi."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Update Text
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key]; // Use innerHTML to handle <strong> tags
+                }
+            });
+            
+            // Update Active Pill State
+            document.querySelectorAll('.lang-pill').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // --- Theme Toggle Logic ---
+        const themeToggle = document.querySelector('.theme-toggle');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            themeToggle.textContent = "☀️";
+        } else {
+            themeToggle.textContent = "🌙";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            let theme = document.documentElement.getAttribute("data-theme");
+            if (theme === "dark") {
+                document.documentElement.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+                themeToggle.textContent = "🌙";
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeToggle.textContent = "☀️";
+            }
+        });
+    </script>
+</body>
+</html>
