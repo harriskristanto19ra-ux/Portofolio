@@ -22,7 +22,7 @@
             --text-primary: #1e293b;   /* Slate 800 */
             --text-secondary: #475569; /* Slate 600 */
             
-            /* NEW COLOR: Strategic Navy */
+            /* Strategic Navy */
             --primary-color: #1e3a8a;  /* Deep Navy Blue */
             --primary-hover: #172554;  /* Darker Navy */
             --accent-subtle: #e0e7ff;  /* Light Indigo wash */
@@ -124,7 +124,7 @@
         .btn {
             display: inline-block;
             padding: 0.875rem 2rem;
-            border-radius: 4px; /* Slightly more square for professional look */
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -233,56 +233,42 @@
             color: var(--primary-color);
         }
         
-        /* Language Dropdown */
-        .lang-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .lang-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            color: var(--text-primary);
-            font-size: 0.9rem;
+        /* Language Switcher Pill Style */
+        .lang-pills {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .lang-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: var(--bg-card);
-            min-width: 120px;
-            box-shadow: var(--shadow-lg);
-            border-radius: 4px;
+            background-color: var(--bg-primary);
+            padding: 4px;
+            border-radius: 50px;
             border: 1px solid var(--border-color);
-            z-index: 1001;
-            margin-top: 0.5rem;
+            gap: 2px;
         }
 
-        .lang-content button {
-            color: var(--text-primary);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            text-align: left;
+        .lang-pill {
             background: none;
             border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
             cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: var(--transition);
         }
 
-        .lang-content button:hover {
+        .lang-pill:hover {
+            color: var(--primary-color);
             background-color: var(--accent-subtle);
         }
 
-        .lang-dropdown:hover .lang-content {
-            display: block;
+        .lang-pill.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Dark mode pill adjustments */
+        [data-theme="dark"] .lang-pill.active {
+            color: #0f172a;
         }
 
         .theme-toggle {
@@ -311,7 +297,6 @@
             align-items: center;
             justify-content: center;
             padding-top: var(--nav-height);
-            /* Elegant, subtle gradient for professional feel */
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--accent-subtle) 100%);
         }
 
@@ -356,9 +341,9 @@
         .hero-image img {
             width: 100%;
             max-width: 450px;
-            border-radius: 4px; /* More professional, less rounded */
+            border-radius: 4px;
             box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color); /* Cleaner border */
+            border: 1px solid var(--border-color);
             aspect-ratio: 1 / 1.1;
             object-fit: cover;
         }
@@ -560,12 +545,31 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             text-align: center;
+            transition: var(--transition);
+        }
+        
+        .skill-category:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
         }
         
         .skill-icon {
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+        }
+
+        .skill-learn-more {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .skill-learn-more:hover {
+            border-bottom-color: var(--primary-color);
         }
 
         /* --- CONTACT --- */
@@ -723,7 +727,8 @@
     <!-- Header / Navigation -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">Portfolio<span>.</span></a>
+            <!-- Modified Branding -->
+            <a href="#" class="logo">portfolio<span>.</span></a>
             
             <button class="mobile-menu-btn" aria-label="Toggle Menu">
                 ☰
@@ -738,15 +743,11 @@
                     <a href="#contact" data-i18n="nav_contact">Contact</a>
                 </nav>
 
-                <div class="lang-dropdown">
-                    <button class="lang-btn">
-                        🌐 <span id="current-lang">EN</span> ▼
-                    </button>
-                    <div class="lang-content">
-                        <button onclick="changeLanguage('en')">English</button>
-                        <button onclick="changeLanguage('zh')">繁體中文</button>
-                        <button onclick="changeLanguage('id')">Bahasa Indo</button>
-                    </div>
+                <!-- Modified Language Switcher (Pill Style) -->
+                <div class="lang-pills">
+                    <button class="lang-pill active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    <button class="lang-pill" onclick="changeLanguage('zh')" data-lang="zh">繁中</button>
+                    <button class="lang-pill" onclick="changeLanguage('id')" data-lang="id">ID</button>
                 </div>
 
                 <button class="theme-toggle" aria-label="Toggle Dark Mode">
@@ -924,6 +925,8 @@
                     <p>AI Fundamentals</p>
                     <p>Data Structures</p>
                     <p>Database Management</p>
+                    <!-- Added Learn More -->
+                    <a href="#" class="skill-learn-more" data-i18n="btn_learn_more">Learn More &rarr;</a>
                 </div>
 
                 <div class="skill-category">
@@ -932,6 +935,8 @@
                     <p data-i18n="lang_en">English (TOEIC 910)</p>
                     <p data-i18n="lang_zh">Mandarin (Fluent)</p>
                     <p data-i18n="lang_trans">Technical Translation</p>
+                    <!-- Added Learn More -->
+                    <a href="#" class="skill-learn-more" data-i18n="btn_learn_more">Learn More &rarr;</a>
                 </div>
 
                 <div class="skill-category">
@@ -940,6 +945,8 @@
                     <p data-i18n="ind_qa">Quality Assurance</p>
                     <p data-i18n="ind_semi">Semiconductor Mfg</p>
                     <p data-i18n="ind_auto">Process Automation</p>
+                    <!-- Added Learn More -->
+                    <a href="#" class="skill-learn-more" data-i18n="btn_learn_more">Learn More &rarr;</a>
                 </div>
 
             </div>
@@ -1044,7 +1051,8 @@
                 title_contact: "Get In Touch", contact_sub: "Let's Innovate Together",
                 contact_desc: "I'm currently seeking opportunities to apply my QA background and AI knowledge to meaningful projects in Taiwan.",
                 contact_loc: "Taiwan",
-                form_name: "Name", form_email: "Email", form_msg: "Message", form_btn: "Send Message"
+                form_name: "Name", form_email: "Email", form_msg: "Message", form_btn: "Send Message",
+                btn_learn_more: "Learn More →"
             },
             zh: {
                 nav_about: "關於我", nav_exp: "工作經歷", nav_skills: "技能", nav_projects: "專案作品", nav_contact: "聯絡方式",
@@ -1082,13 +1090,14 @@
                 title_contact: "聯絡方式", contact_sub: "讓我們一起創新",
                 contact_desc: "我目前正在尋求機會，將我的QA背景與AI知識應用於台灣的有意義專案中。",
                 contact_loc: "台灣",
-                form_name: "姓名", form_email: "電子郵件", form_msg: "訊息", form_btn: "發送訊息"
+                form_name: "姓名", form_email: "電子郵件", form_msg: "訊息", form_btn: "發送訊息",
+                btn_learn_more: "了解更多 →"
             },
             id: {
                 nav_about: "Tentang", nav_exp: "Pengalaman", nav_skills: "Keahlian", nav_projects: "Proyek", nav_contact: "Kontak",
                 hero_subtitle: "Spesialis Jaminan Kualitas (QA)",
                 hero_title: "Harris Kristanto",
-                hero_desc: "Mengambil inspirasi dari filosofi eksistensial untuk menghadapi tantangan dengan ket坚unan. Saya memadukan jaminan kualitas manufaktur dengan inovasi AI untuk meningkatkan keandalan dan efisiensi.",
+                hero_desc: "Mengambil inspirasi dari filosofi eksistensial untuk menghadapi tantangan dengan ketekunan. Saya memadukan jaminan kualitas manufaktur dengan inovasi AI untuk meningkatkan keandalan dan efisiensi.",
                 btn_work: "Lihat Karya Saya", btn_contact: "Hubungi Saya",
                 title_about: "Tentang Saya",
                 about_p1: "Saya adalah spesialis jaminan kualitas yang energik berbasis di Taiwan dengan empat tahun pengalaman manufaktur. Latar belakang saya mencakup magang di komponen furnitur logam dan sepeda.",
@@ -1120,11 +1129,13 @@
                 title_contact: "Hubungi Kami", contact_sub: "Mari Berinovasi Bersama",
                 contact_desc: "Saya saat ini mencari peluang untuk menerapkan latar belakang QA dan pengetahuan AI saya pada proyek-proyek bermakna di Taiwan.",
                 contact_loc: "Taiwan",
-                form_name: "Nama", form_email: "Email", form_msg: "Pesan", form_btn: "Kirim Pesan"
+                form_name: "Nama", form_email: "Email", form_msg: "Pesan", form_btn: "Kirim Pesan",
+                btn_learn_more: "Pelajari Lebih Lanjut →"
             }
         };
 
         function changeLanguage(lang) {
+            // Update Text
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
@@ -1132,14 +1143,14 @@
                 }
             });
             
-            const btnLabel = lang === 'en' ? 'EN' : (lang === 'zh' ? '繁中' : 'ID');
-            document.getElementById('current-lang').textContent = btnLabel;
-            
-            // Close dropdown (optional behavior for mobile)
-            document.querySelector('.lang-content').style.display = 'none';
-            setTimeout(() => {
-                document.querySelector('.lang-content').style.display = '';
-            }, 100);
+            // Update Active Pill State
+            document.querySelectorAll('.lang-pill').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
         }
 
         // --- Theme Toggle Logic ---
@@ -1216,4 +1227,3 @@
     </script>
 </body>
 </html>
-
