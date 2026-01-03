@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Harris Kristanto - Quality Assurance Specialist & AI Enthusiast based in Taiwan.">
+    <title>Harris Kristanto | QA Specialist & AI Enthusiast</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & THEME CONFIGURATION --- */
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-accent: #0f766e; /* Deep Teal for Tech/AI */
+            --primary-color: #0f766e;
+            --primary-hover: #115e59;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --nav-height: 80px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-accent: #2dd4bf; /* Brighter Teal for Dark Mode */
+            --primary-color: #2dd4bf;
+            --primary-hover: #14b8a6;
+            --border-color: #374151;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+        [data-theme="dark"] .btn-primary {
+            color: #0f172a; /* Dark text on bright button for contrast */
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            [data-theme="dark"] & {
+                 color: #0f172a;
+            }
+        }
+
+        /* --- ANIMATIONS --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        [data-theme="dark"] header {
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin-left: 1rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: var(--nav-height);
+            background: radial-gradient(circle at top right, var(--primary-color) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, var(--bg-secondary) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--bg-card);
+            aspect-ratio: 1 / 1.1;
+            object-fit: cover;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* --- EXPERIENCE & EDUCATION --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .timeline-role {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            list-style: inside disc;
+            margin-left: 0.5rem;
+        }
+
+        /* --- PROJECTS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: var(--border-color);
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background-color: rgba(15, 118, 110, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        [data-theme="dark"] .tag {
+            background-color: rgba(45, 212, 191, 0.15);
+        }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- CONTACT --- */
+        #contact {
+            background-color: var(--bg-secondary);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background-color: var(--bg-card);
+            border-radius: 24px;
+            padding: 4rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            ring: 2px solid var(--primary-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--bg-primary);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 968px) {
+            .hero-content, .about-grid, .contact-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item::after {
+                left: 14px;
+            }
+            .timeline-item {
+                padding-left: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-container {
+                padding: 2rem;
+            }
+        }
+        
+        /* --- PRINT STYLES --- */
+        @media print {
+            header, .theme-toggle, .mobile-menu-btn, .hero-buttons, #contact-form, footer {
+                display: none !important;
+            }
+            
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            
+            section {
+                padding: 1rem 0;
+                page-break-inside: avoid;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+            }
+            
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            
+            .hero-content {
+                display: block;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Harris<span>.</span></a>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                ☰
+            </button>
+
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" aria-label="Toggle Dark Mode">
+                    🌙
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-text fade-in-up">
+                <h2>Quality Assurance Specialist</h2>
+                <h1>Harris Kristanto</h1>
+                <p>Drawing inspiration from existential philosophy to tackle challenges with grit. I blend manufacturing quality assurance with AI innovation to boost reliability and efficiency in dynamic environments.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in-up">
+                <!-- Using a high-quality Unsplash image for a professional tech/QA look -->
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop" alt="Harris Kristanto Placeholder" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in-up">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in-up">
+                    <p>
+                        I am an energetic quality assurance specialist based in Taiwan with four years of hands-on experience in manufacturing. My background spans internships in metal furniture and bicycle components, where I honed my analytical skills to ensure product excellence.
+                    </p>
+                    <p>
+                        Passionate about cutting-edge technology, I am deeply curious about how Artificial Intelligence can change the game in fields like manufacturing and semiconductors. My goal is to dive into roles that allow me to use machine learning to make processes smarter, more efficient, and ethically sound.
+                    </p>
+                    <p>
+                        <strong>Motivation:</strong> From tinkering with AI tools in my own projects to automate defect detection (cutting down simulation errors significantly), I've become hooked on blending my QA background with these innovations.
+                    </p>
+                </div>
+                <div class="about-stats fade-in-up">
+                    <div class="stat-card">
+                        <h3>4+</h3>
+                        <p>Years in QA & Mfg</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>910</h3>
+                        <p>TOEIC Score (Advanced)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Experience</h2>
+            <div class="timeline">
+                
+                <!-- Freelance Translator -->
+                <div class="timeline-item fade-in-up">
+                    <span class="timeline-date">Recent</span>
+                    <div class="timeline-content">
+                        <h3 class="timeline-role">Freelance Translator & OCAC Ambassador</h3>
+                        <h4 class="timeline-company">Overseas Community Affairs Council (OCAC), Taiwan</h4>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Served as a freelance translator for technical manufacturing documents.</li>
+                                <li>Selected as an ambassador to represent a vocational institution.</li>
+                                <li>Bridged English and Mandarin to facilitate cross-cultural team collaborations.</li>
+                                <li>Introduced Taiwan's education system to audiences in the Philippines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internships -->
+                <div class="timeline-item fade-in-up">
+                    <span class="timeline-date">Past 4 Years</span>
+                    <div class="timeline-content">
+                        <h3 class="timeline-role">Quality Assurance Specialist (Internships)</h3>
+                        <h4 class="timeline-company">Metal Furniture & Bicycle Component Manufacturers</h4>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Hands-on manufacturing experience in dynamic environments.</li>
+                                <li>Applied sharp analytical skills to boost reliability and efficiency.</li>
+                                <li>Focus on meaningful innovation and defect reduction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Technical Innovation</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1: AI Defect Detection -->
+                <div class="project-card fade-in-up">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Defect Detection">
+                    </div>
+                    <div class="project-info">
+                        <h3>Automated Defect Detection System</h3>
+                        <div class="project-tags">
+                            <span class="tag">AI / ML</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">QA</span>
+                        </div>
+                        <p>A personal project leveraging AI tools to automate defect detection in simulation environments. Successfully reduced simulation errors significantly by integrating machine learning algorithms with traditional quality assurance methodologies.</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">View Case Study &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Semiconductor Research Interest -->
+                <div class="project-card fade-in-up">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=800&auto=format&fit=crop" alt="Semiconductor Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>Semiconductor Efficiency Analysis</h3>
+                        <div class="project-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Semiconductors</span>
+                            <span class="tag">Data Analysis</span>
+                        </div>
+                        <p>Focusing on the intersection of AI and semiconductor manufacturing. Exploring methods to push forward advancements in reliability and ethical tech implementation within the chip manufacturing industry.</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">Read More &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education" style="background-color: var(--bg-card);">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Education & Certifications</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <div class="timeline-content fade-in-up">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Bachelor of Technology in IT</h3>
+                    <h4>National Chin-Yi University of Technology, Taiwan</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Expected Graduation: June 2028</p>
+                    <p><strong>Relevant Coursework:</strong> Data Structures, AI Fundamentals, Database Management</p>
+                    <p style="margin-top: 0.5rem;"><strong>Leadership:</strong> Class Representative (2024-Present) - Organized events and represented student concerns.</p>
+                </div>
+
+                <div class="timeline-content fade-in-up">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Gemini Student Certification</h3>
+                    <h4>Google / AI Certification</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Awarded Recently</p>
+                    <p>Demonstrated foundational knowledge in AI and machine learning applications, solidifying the bridge between IT concepts and practical QA implementation.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Skills</h2>
+            <div class="skills-grid fade-in-up">
+                
+                <div class="skill-category">
+                    <div class="skill-icon">🧠</div>
+                    <h3>Technical</h3>
+                    <p>AI Fundamentals</p>
+                    <p>Data Structures</p>
+                    <p>Database Management</p>
+                    <p>Defect Detection</p>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Languages</h3>
+                    <p>English (TOEIC 910)</p>
+                    <p>Mandarin (Fluent)</p>
+                    <p>Technical Translation</p>
+                    <p>Cross-Cultural Communication</p>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Industry</h3>
+                    <p>Quality Assurance</p>
+                    <p>Semiconductor Mfg Interest</p>
+                    <p>Process Automation</p>
+                    <p>Reliability Analysis</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Get In Touch</h2>
+            <div class="contact-container fade-in-up">
+                
+                <div class="contact-info">
+                    <h3>Let's Innovate Together</h3>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                        I'm currently seeking opportunities to apply my QA background and AI knowledge to meaningful projects in Taiwan.
+                    </p>
+                    
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <a href="tel:+886903408282">+886 903 408 282</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <a href="mailto:harrislim19ar@gmail.com">harrislim19ar@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Taiwan</span>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your message! This is a demo form.');">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" class="form-control" placeholder="How can we work together?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="mailto:harrislim19ar@gmail.com" aria-label="Email">Email</a>
+            </div>
+            <p style="color: var(--text-secondary);">&copy; 2026 Harris Kristanto. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Check local storage or system preference
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme == "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            themeToggle.textContent = "☀️";
+        } else if (currentTheme == "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+            themeToggle.textContent = "🌙";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            let theme = document.documentElement.getAttribute("data-theme");
+            if (theme === "dark") {
+                document.documentElement.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+                themeToggle.textContent = "🌙";
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                themeToggle.textContent = "☀️";
+            }
+        });
+
+        // --- Mobile Menu Logic ---
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileBtn.textContent = '☰';
+            });
+        });
+
+        // --- Intersection Observer for Fade-in Animation ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Smooth Scroll for Anchor Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
