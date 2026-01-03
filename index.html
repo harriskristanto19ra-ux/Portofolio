@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Harris Kristanto - Quality Assurance Specialist & AI Enthusiast based in Taiwan.">
-    <title>Harris Kristanto | QA Specialist & AI Enthusiast</title>
+    <title>Harris Kristanto | QA Specialist</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,16 +14,20 @@
     <style>
         /* --- CSS VARIABLES & THEME CONFIGURATION --- */
         :root {
-            /* Light Theme (Default) */
+            /* Light Theme (Professional Navy) */
             --bg-primary: #f8f9fa;
             --bg-secondary: #ffffff;
             --bg-card: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-accent: #0f766e; /* Deep Teal for Tech/AI */
-            --primary-color: #0f766e;
-            --primary-hover: #115e59;
-            --border-color: #e5e7eb;
+            
+            --text-primary: #1e293b;   /* Slate 800 */
+            --text-secondary: #475569; /* Slate 600 */
+            
+            /* NEW COLOR: Strategic Navy */
+            --primary-color: #1e3a8a;  /* Deep Navy Blue */
+            --primary-hover: #172554;  /* Darker Navy */
+            --accent-subtle: #e0e7ff;  /* Light Indigo wash */
+            
+            --border-color: #e2e8f0;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
@@ -32,15 +36,19 @@
         }
 
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
+            --bg-primary: #0f172a;     /* Slate 900 */
+            --bg-secondary: #1e293b;   /* Slate 800 */
             --bg-card: #1e293b;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --text-accent: #2dd4bf; /* Brighter Teal for Dark Mode */
-            --primary-color: #2dd4bf;
-            --primary-hover: #14b8a6;
-            --border-color: #374151;
+            
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            
+            /* Dark Mode Accent: Brighter Blue for legibility */
+            --primary-color: #60a5fa; 
+            --primary-hover: #3b82f6;
+            --accent-subtle: rgba(96, 165, 250, 0.1);
+            
+            --border-color: #334155;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
@@ -116,12 +124,13 @@
         .btn {
             display: inline-block;
             padding: 0.875rem 2rem;
-            border-radius: 50px;
+            border-radius: 4px; /* Slightly more square for professional look */
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             font-size: 1rem;
             border: 2px solid transparent;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
@@ -129,7 +138,7 @@
             color: #ffffff;
         }
         [data-theme="dark"] .btn-primary {
-            color: #0f172a; /* Dark text on bright button for contrast */
+            color: #0f172a;
         }
 
         .btn-primary:hover {
@@ -171,7 +180,7 @@
             left: 0;
             width: 100%;
             height: var(--nav-height);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
@@ -179,7 +188,7 @@
         }
 
         [data-theme="dark"] header {
-            background-color: rgba(15, 23, 42, 0.9);
+            background-color: rgba(15, 23, 42, 0.95);
         }
 
         .nav-container {
@@ -194,10 +203,17 @@
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-primary);
+            letter-spacing: -0.5px;
         }
         
         .logo span {
             color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-links {
@@ -210,10 +226,63 @@
             font-weight: 500;
             color: var(--text-secondary);
             font-size: 0.95rem;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
+        }
+        
+        /* Language Dropdown */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--bg-card);
+            min-width: 120px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .lang-content button {
+            color: var(--text-primary);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lang-content button:hover {
+            background-color: var(--accent-subtle);
+        }
+
+        .lang-dropdown:hover .lang-content {
+            display: block;
         }
 
         .theme-toggle {
@@ -222,14 +291,8 @@
             cursor: pointer;
             color: var(--text-primary);
             font-size: 1.25rem;
-            margin-left: 1rem;
             padding: 0.5rem;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-        
-        .theme-toggle:hover {
-            background-color: var(--border-color);
+            transition: color 0.3s;
         }
 
         .mobile-menu-btn {
@@ -248,8 +311,8 @@
             align-items: center;
             justify-content: center;
             padding-top: var(--nav-height);
-            background: radial-gradient(circle at top right, var(--primary-color) 0%, transparent 40%),
-                        radial-gradient(circle at bottom left, var(--bg-secondary) 0%, transparent 40%);
+            /* Elegant, subtle gradient for professional feel */
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--accent-subtle) 100%);
         }
 
         .hero-content {
@@ -260,22 +323,22 @@
         }
 
         .hero-text h2 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.1;
         }
 
         .hero-text p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
             max-width: 600px;
@@ -292,10 +355,10 @@
 
         .hero-image img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
+            max-width: 450px;
+            border-radius: 4px; /* More professional, less rounded */
             box-shadow: var(--shadow-lg);
-            border: 4px solid var(--bg-card);
+            border: 1px solid var(--border-color); /* Cleaner border */
             aspect-ratio: 1 / 1.1;
             object-fit: cover;
         }
@@ -311,7 +374,7 @@
         .about-text p {
             margin-bottom: 1.5rem;
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .about-stats {
@@ -323,10 +386,15 @@
         .stat-card {
             background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 16px;
+            border-radius: 8px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
             text-align: center;
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            border-color: var(--primary-color);
         }
 
         .stat-card h3 {
@@ -337,7 +405,10 @@
 
         .stat-card p {
             color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         /* --- EXPERIENCE & EDUCATION --- */
@@ -378,7 +449,7 @@
         .timeline-content {
             background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 8px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
             transition: var(--transition);
@@ -399,15 +470,15 @@
         }
 
         .timeline-role {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
         }
 
         .timeline-company {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             margin-bottom: 1rem;
-            font-style: italic;
+            font-weight: 500;
         }
 
         .timeline-desc li {
@@ -426,7 +497,7 @@
 
         .project-card {
             background-color: var(--bg-card);
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
@@ -436,6 +507,7 @@
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
 
         .project-img {
@@ -467,16 +539,12 @@
         }
 
         .tag {
-            background-color: rgba(15, 118, 110, 0.1);
+            background-color: var(--accent-subtle);
             color: var(--primary-color);
             padding: 0.25rem 0.75rem;
-            border-radius: 50px;
+            border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 600;
-        }
-        
-        [data-theme="dark"] .tag {
-            background-color: rgba(45, 212, 191, 0.15);
         }
 
         /* --- SKILLS --- */
@@ -489,7 +557,7 @@
         .skill-category {
             background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
             text-align: center;
         }
@@ -510,9 +578,10 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             background-color: var(--bg-card);
-            border-radius: 24px;
+            border-radius: 12px;
             padding: 4rem;
             box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
         }
 
         .contact-info h3 {
@@ -542,7 +611,7 @@
             width: 100%;
             padding: 1rem;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 4px;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
@@ -551,7 +620,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            ring: 2px solid var(--primary-color);
+            box-shadow: 0 0 0 2px var(--accent-subtle);
         }
 
         /* --- FOOTER --- */
@@ -615,7 +684,7 @@
                 display: block;
             }
 
-            .nav-links {
+            .nav-actions {
                 position: fixed;
                 top: var(--nav-height);
                 left: 0;
@@ -626,11 +695,17 @@
                 border-bottom: 1px solid var(--border-color);
                 transform: translateY(-150%);
                 transition: transform 0.3s ease-in-out;
+                gap: 1.5rem;
             }
 
-            .nav-links.active {
+            .nav-actions.active {
                 transform: translateY(0);
                 box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
             }
 
             .hero-text h1 {
@@ -639,47 +714,6 @@
             
             .contact-container {
                 padding: 2rem;
-            }
-        }
-        
-        /* --- PRINT STYLES --- */
-        @media print {
-            header, .theme-toggle, .mobile-menu-btn, .hero-buttons, #contact-form, footer {
-                display: none !important;
-            }
-            
-            body {
-                background-color: white;
-                color: black;
-                font-size: 12pt;
-            }
-            
-            section {
-                padding: 1rem 0;
-                page-break-inside: avoid;
-            }
-            
-            h1, h2, h3 {
-                page-break-after: avoid;
-            }
-            
-            .container {
-                width: 100%;
-                max-width: none;
-                padding: 0;
-            }
-            
-            a {
-                text-decoration: none;
-                color: black;
-            }
-            
-            .hero-content {
-                display: block;
-            }
-            
-            .hero-image {
-                display: none;
             }
         }
     </style>
@@ -695,16 +729,30 @@
                 ☰
             </button>
 
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+            <div class="nav-actions">
+                <nav class="nav-links">
+                    <a href="#about" data-i18n="nav_about">About</a>
+                    <a href="#experience" data-i18n="nav_exp">Experience</a>
+                    <a href="#skills" data-i18n="nav_skills">Skills</a>
+                    <a href="#projects" data-i18n="nav_projects">Projects</a>
+                    <a href="#contact" data-i18n="nav_contact">Contact</a>
+                </nav>
+
+                <div class="lang-dropdown">
+                    <button class="lang-btn">
+                        🌐 <span id="current-lang">EN</span> ▼
+                    </button>
+                    <div class="lang-content">
+                        <button onclick="changeLanguage('en')">English</button>
+                        <button onclick="changeLanguage('zh')">繁體中文</button>
+                        <button onclick="changeLanguage('id')">Bahasa Indo</button>
+                    </div>
+                </div>
+
                 <button class="theme-toggle" aria-label="Toggle Dark Mode">
                     🌙
                 </button>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -712,17 +760,17 @@
     <section id="hero">
         <div class="container hero-content">
             <div class="hero-text fade-in-up">
-                <h2>Quality Assurance Specialist</h2>
-                <h1>Harris Kristanto</h1>
-                <p>Drawing inspiration from existential philosophy to tackle challenges with grit. I blend manufacturing quality assurance with AI innovation to boost reliability and efficiency in dynamic environments.</p>
+                <h2 data-i18n="hero_subtitle">Quality Assurance Specialist</h2>
+                <h1 data-i18n="hero_title">Harris Kristanto</h1>
+                <p data-i18n="hero_desc">Drawing inspiration from existential philosophy to tackle challenges with grit. I blend manufacturing quality assurance with AI innovation to boost reliability and efficiency in dynamic environments.</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                    <a href="#projects" class="btn btn-primary" data-i18n="btn_work">View My Work</a>
+                    <a href="#contact" class="btn btn-outline" data-i18n="btn_contact">Get in Touch</a>
                 </div>
             </div>
             <div class="hero-image fade-in-up">
-                <!-- Using a high-quality Unsplash image for a professional tech/QA look -->
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop" alt="Harris Kristanto Placeholder" loading="lazy">
+                <!-- Professional image for QA/Tech -->
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop" alt="Harris Kristanto Professional" loading="lazy">
             </div>
         </div>
     </section>
@@ -730,27 +778,24 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title fade-in-up">About Me</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_about">About Me</h2>
             <div class="about-grid">
                 <div class="about-text fade-in-up">
-                    <p>
+                    <p data-i18n="about_p1">
                         I am an energetic quality assurance specialist based in Taiwan with four years of hands-on experience in manufacturing. My background spans internships in metal furniture and bicycle components, where I honed my analytical skills to ensure product excellence.
                     </p>
-                    <p>
+                    <p data-i18n="about_p2">
                         Passionate about cutting-edge technology, I am deeply curious about how Artificial Intelligence can change the game in fields like manufacturing and semiconductors. My goal is to dive into roles that allow me to use machine learning to make processes smarter, more efficient, and ethically sound.
-                    </p>
-                    <p>
-                        <strong>Motivation:</strong> From tinkering with AI tools in my own projects to automate defect detection (cutting down simulation errors significantly), I've become hooked on blending my QA background with these innovations.
                     </p>
                 </div>
                 <div class="about-stats fade-in-up">
                     <div class="stat-card">
                         <h3>4+</h3>
-                        <p>Years in QA & Mfg</p>
+                        <p data-i18n="stat_years">Years in QA & Mfg</p>
                     </div>
                     <div class="stat-card">
                         <h3>910</h3>
-                        <p>TOEIC Score (Advanced)</p>
+                        <p data-i18n="stat_toeic">TOEIC Score (Advanced)</p>
                     </div>
                 </div>
             </div>
@@ -760,21 +805,20 @@
     <!-- Experience Section -->
     <section id="experience">
         <div class="container">
-            <h2 class="section-title fade-in-up">Experience</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_exp">Experience</h2>
             <div class="timeline">
                 
                 <!-- Freelance Translator -->
                 <div class="timeline-item fade-in-up">
-                    <span class="timeline-date">Recent</span>
+                    <span class="timeline-date" data-i18n="date_recent">Recent</span>
                     <div class="timeline-content">
-                        <h3 class="timeline-role">Freelance Translator & OCAC Ambassador</h3>
-                        <h4 class="timeline-company">Overseas Community Affairs Council (OCAC), Taiwan</h4>
+                        <h3 class="timeline-role" data-i18n="exp1_role">Freelance Translator & OCAC Ambassador</h3>
+                        <h4 class="timeline-company" data-i18n="exp1_comp">Overseas Community Affairs Council (OCAC), Taiwan</h4>
                         <div class="timeline-desc">
                             <ul>
-                                <li>Served as a freelance translator for technical manufacturing documents.</li>
-                                <li>Selected as an ambassador to represent a vocational institution.</li>
-                                <li>Bridged English and Mandarin to facilitate cross-cultural team collaborations.</li>
-                                <li>Introduced Taiwan's education system to audiences in the Philippines.</li>
+                                <li data-i18n="exp1_li1">Served as a freelance translator for technical manufacturing documents.</li>
+                                <li data-i18n="exp1_li2">Selected as an ambassador to represent a vocational institution.</li>
+                                <li data-i18n="exp1_li3">Bridged English and Mandarin to facilitate cross-cultural team collaborations.</li>
                             </ul>
                         </div>
                     </div>
@@ -782,15 +826,15 @@
 
                 <!-- Internships -->
                 <div class="timeline-item fade-in-up">
-                    <span class="timeline-date">Past 4 Years</span>
+                    <span class="timeline-date" data-i18n="date_4years">Past 4 Years</span>
                     <div class="timeline-content">
-                        <h3 class="timeline-role">Quality Assurance Specialist (Internships)</h3>
-                        <h4 class="timeline-company">Metal Furniture & Bicycle Component Manufacturers</h4>
+                        <h3 class="timeline-role" data-i18n="exp2_role">Quality Assurance Specialist (Internships)</h3>
+                        <h4 class="timeline-company" data-i18n="exp2_comp">Metal Furniture & Bicycle Component Manufacturers</h4>
                         <div class="timeline-desc">
                             <ul>
-                                <li>Hands-on manufacturing experience in dynamic environments.</li>
-                                <li>Applied sharp analytical skills to boost reliability and efficiency.</li>
-                                <li>Focus on meaningful innovation and defect reduction.</li>
+                                <li data-i18n="exp2_li1">Hands-on manufacturing experience in dynamic environments.</li>
+                                <li data-i18n="exp2_li2">Applied sharp analytical skills to boost reliability and efficiency.</li>
+                                <li data-i18n="exp2_li3">Focus on meaningful innovation and defect reduction.</li>
                             </ul>
                         </div>
                     </div>
@@ -803,7 +847,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title fade-in-up">Technical Innovation</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_projects">Technical Innovation</h2>
             <div class="projects-grid">
                 
                 <!-- Project 1: AI Defect Detection -->
@@ -812,14 +856,14 @@
                         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Defect Detection">
                     </div>
                     <div class="project-info">
-                        <h3>Automated Defect Detection System</h3>
+                        <h3 data-i18n="proj1_title">Automated Defect Detection System</h3>
                         <div class="project-tags">
                             <span class="tag">AI / ML</span>
                             <span class="tag">Automation</span>
                             <span class="tag">QA</span>
                         </div>
-                        <p>A personal project leveraging AI tools to automate defect detection in simulation environments. Successfully reduced simulation errors significantly by integrating machine learning algorithms with traditional quality assurance methodologies.</p>
-                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">View Case Study &rarr;</a>
+                        <p data-i18n="proj1_desc">A personal project leveraging AI tools to automate defect detection in simulation environments. Successfully reduced simulation errors significantly by integrating machine learning algorithms.</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;" data-i18n="btn_view">View Case Study &rarr;</a>
                     </div>
                 </div>
 
@@ -829,14 +873,14 @@
                         <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=800&auto=format&fit=crop" alt="Semiconductor Analysis">
                     </div>
                     <div class="project-info">
-                        <h3>Semiconductor Efficiency Analysis</h3>
+                        <h3 data-i18n="proj2_title">Semiconductor Efficiency Analysis</h3>
                         <div class="project-tags">
                             <span class="tag">Research</span>
                             <span class="tag">Semiconductors</span>
                             <span class="tag">Data Analysis</span>
                         </div>
-                        <p>Focusing on the intersection of AI and semiconductor manufacturing. Exploring methods to push forward advancements in reliability and ethical tech implementation within the chip manufacturing industry.</p>
-                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">Read More &rarr;</a>
+                        <p data-i18n="proj2_desc">Focusing on the intersection of AI and semiconductor manufacturing. Exploring methods to push forward advancements in reliability and ethical tech implementation.</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;" data-i18n="btn_read">Read More &rarr;</a>
                     </div>
                 </div>
 
@@ -847,23 +891,21 @@
     <!-- Education & Certifications -->
     <section id="education" style="background-color: var(--bg-card);">
         <div class="container">
-            <h2 class="section-title fade-in-up">Education & Certifications</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_edu">Education & Certifications</h2>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 
                 <div class="timeline-content fade-in-up">
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Bachelor of Technology in IT</h3>
-                    <h4>National Chin-Yi University of Technology, Taiwan</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Expected Graduation: June 2028</p>
-                    <p><strong>Relevant Coursework:</strong> Data Structures, AI Fundamentals, Database Management</p>
-                    <p style="margin-top: 0.5rem;"><strong>Leadership:</strong> Class Representative (2024-Present) - Organized events and represented student concerns.</p>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;" data-i18n="edu1_degree">Bachelor of Technology in IT</h3>
+                    <h4 data-i18n="edu1_school">National Chin-Yi University of Technology, Taiwan</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;" data-i18n="edu1_date">Expected Graduation: June 2028</p>
+                    <p><strong data-i18n="edu1_label1">Relevant Coursework:</strong> <span data-i18n="edu1_courses">Data Structures, AI Fundamentals, Database Management</span></p>
                 </div>
 
                 <div class="timeline-content fade-in-up">
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Gemini Student Certification</h3>
-                    <h4>Google / AI Certification</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Awarded Recently</p>
-                    <p>Demonstrated foundational knowledge in AI and machine learning applications, solidifying the bridge between IT concepts and practical QA implementation.</p>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;" data-i18n="edu2_cert">Gemini Student Certification</h3>
+                    <h4 data-i18n="edu2_org">Google / AI Certification</h4>
+                    <p data-i18n="edu2_desc">Demonstrated foundational knowledge in AI and machine learning applications, solidifying the bridge between IT concepts and practical QA implementation.</p>
                 </div>
 
             </div>
@@ -873,34 +915,31 @@
     <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title fade-in-up">Skills</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_skills">Skills</h2>
             <div class="skills-grid fade-in-up">
                 
                 <div class="skill-category">
                     <div class="skill-icon">🧠</div>
-                    <h3>Technical</h3>
+                    <h3 data-i18n="skill_tech">Technical</h3>
                     <p>AI Fundamentals</p>
                     <p>Data Structures</p>
                     <p>Database Management</p>
-                    <p>Defect Detection</p>
                 </div>
 
                 <div class="skill-category">
                     <div class="skill-icon">🌐</div>
-                    <h3>Languages</h3>
-                    <p>English (TOEIC 910)</p>
-                    <p>Mandarin (Fluent)</p>
-                    <p>Technical Translation</p>
-                    <p>Cross-Cultural Communication</p>
+                    <h3 data-i18n="skill_lang">Languages</h3>
+                    <p data-i18n="lang_en">English (TOEIC 910)</p>
+                    <p data-i18n="lang_zh">Mandarin (Fluent)</p>
+                    <p data-i18n="lang_trans">Technical Translation</p>
                 </div>
 
                 <div class="skill-category">
                     <div class="skill-icon">⚙️</div>
-                    <h3>Industry</h3>
-                    <p>Quality Assurance</p>
-                    <p>Semiconductor Mfg Interest</p>
-                    <p>Process Automation</p>
-                    <p>Reliability Analysis</p>
+                    <h3 data-i18n="skill_ind">Industry</h3>
+                    <p data-i18n="ind_qa">Quality Assurance</p>
+                    <p data-i18n="ind_semi">Semiconductor Mfg</p>
+                    <p data-i18n="ind_auto">Process Automation</p>
                 </div>
 
             </div>
@@ -910,12 +949,12 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title fade-in-up">Get In Touch</h2>
+            <h2 class="section-title fade-in-up" data-i18n="title_contact">Get In Touch</h2>
             <div class="contact-container fade-in-up">
                 
                 <div class="contact-info">
-                    <h3>Let's Innovate Together</h3>
-                    <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                    <h3 data-i18n="contact_sub">Let's Innovate Together</h3>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary);" data-i18n="contact_desc">
                         I'm currently seeking opportunities to apply my QA background and AI knowledge to meaningful projects in Taiwan.
                     </p>
                     
@@ -929,24 +968,24 @@
                     </div>
                     <div class="contact-item">
                         <span>📍</span>
-                        <span>Taiwan</span>
+                        <span data-i18n="contact_loc">Taiwan</span>
                     </div>
                 </div>
 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your message! This is a demo form.');">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your message!');">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                        <label for="name" data-i18n="form_name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                        <label for="email" data-i18n="form_email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4" class="form-control" placeholder="How can we work together?" required></textarea>
+                        <label for="message" data-i18n="form_msg">Message</label>
+                        <textarea id="message" rows="4" class="form-control" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form_btn">Send Message</button>
                 </form>
 
             </div>
@@ -967,17 +1006,152 @@
 
     <!-- JavaScript -->
     <script>
+        // --- Translation Data ---
+        const translations = {
+            en: {
+                nav_about: "About", nav_exp: "Experience", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
+                hero_subtitle: "Quality Assurance Specialist",
+                hero_title: "Harris Kristanto",
+                hero_desc: "Drawing inspiration from existential philosophy to tackle challenges with grit. I blend manufacturing quality assurance with AI innovation to boost reliability and efficiency in dynamic environments.",
+                btn_work: "View My Work", btn_contact: "Get in Touch",
+                title_about: "About Me",
+                about_p1: "I am an energetic quality assurance specialist based in Taiwan with four years of hands-on experience in manufacturing. My background spans internships in metal furniture and bicycle components, where I honed my analytical skills to ensure product excellence.",
+                about_p2: "Passionate about cutting-edge technology, I am deeply curious about how Artificial Intelligence can change the game in fields like manufacturing and semiconductors.",
+                stat_years: "Years in QA & Mfg", stat_toeic: "TOEIC Score (Advanced)",
+                title_exp: "Experience", date_recent: "Recent", date_4years: "Past 4 Years",
+                exp1_role: "Freelance Translator & OCAC Ambassador", exp1_comp: "Overseas Community Affairs Council (OCAC), Taiwan",
+                exp1_li1: "Served as a freelance translator for technical manufacturing documents.",
+                exp1_li2: "Selected as an ambassador to represent a vocational institution.",
+                exp1_li3: "Bridged English and Mandarin to facilitate cross-cultural team collaborations.",
+                exp2_role: "Quality Assurance Specialist (Internships)", exp2_comp: "Metal Furniture & Bicycle Component Manufacturers",
+                exp2_li1: "Hands-on manufacturing experience in dynamic environments.",
+                exp2_li2: "Applied sharp analytical skills to boost reliability and efficiency.",
+                exp2_li3: "Focus on meaningful innovation and defect reduction.",
+                title_projects: "Technical Innovation",
+                proj1_title: "Automated Defect Detection System",
+                proj1_desc: "A personal project leveraging AI tools to automate defect detection in simulation environments. Successfully reduced simulation errors significantly by integrating machine learning algorithms.",
+                btn_view: "View Case Study →", btn_read: "Read More →",
+                proj2_title: "Semiconductor Efficiency Analysis",
+                proj2_desc: "Focusing on the intersection of AI and semiconductor manufacturing. Exploring methods to push forward advancements in reliability and ethical tech implementation.",
+                title_edu: "Education & Certifications",
+                edu1_degree: "Bachelor of Technology in IT", edu1_school: "National Chin-Yi University of Technology, Taiwan",
+                edu1_date: "Expected Graduation: June 2028", edu1_label1: "Relevant Coursework:", edu1_courses: "Data Structures, AI Fundamentals, Database Management",
+                edu2_cert: "Gemini Student Certification", edu2_org: "Google / AI Certification",
+                edu2_desc: "Demonstrated foundational knowledge in AI and machine learning applications, solidifying the bridge between IT concepts and practical QA implementation.",
+                title_skills: "Skills", skill_tech: "Technical", skill_lang: "Languages", skill_ind: "Industry",
+                lang_en: "English (TOEIC 910)", lang_zh: "Mandarin (Fluent)", lang_trans: "Technical Translation",
+                ind_qa: "Quality Assurance", ind_semi: "Semiconductor Mfg", ind_auto: "Process Automation",
+                title_contact: "Get In Touch", contact_sub: "Let's Innovate Together",
+                contact_desc: "I'm currently seeking opportunities to apply my QA background and AI knowledge to meaningful projects in Taiwan.",
+                contact_loc: "Taiwan",
+                form_name: "Name", form_email: "Email", form_msg: "Message", form_btn: "Send Message"
+            },
+            zh: {
+                nav_about: "關於我", nav_exp: "工作經歷", nav_skills: "技能", nav_projects: "專案作品", nav_contact: "聯絡方式",
+                hero_subtitle: "品質保證專員 (QA Specialist)",
+                hero_title: "Harris Kristanto",
+                hero_desc: "從存在主義哲學中汲取靈感，以堅毅的態度面對挑戰。我結合製造業品質保證經驗與AI創新，致力於在動態環境中提升可靠性與效率。",
+                btn_work: "查看作品", btn_contact: "聯絡我",
+                title_about: "關於我",
+                about_p1: "我是一名充滿活力的品質保證專員，現居台灣，擁有四年製造業實務經驗。我的背景涵蓋金屬家具與自行車零組件的實習，在這些經驗中磨練了確保產品卓越的分析能力。",
+                about_p2: "我熱衷於尖端科技，並深切關注人工智慧如何改變製造與半導體領域。我的目標是投入能運用機器學習使製程更智慧、高效且符合道德的職位。",
+                stat_years: "QA 與製造經驗", stat_toeic: "TOEIC 成績 (高階)",
+                title_exp: "工作經歷", date_recent: "近期", date_4years: "過去四年",
+                exp1_role: "自由譯者 & 僑務委員會 (OCAC) 大使", exp1_comp: "中華民國僑務委員會 (OCAC)",
+                exp1_li1: "擔任技術製造文件的自由譯者。",
+                exp1_li2: "獲選為技職機構大使，代表學校進行交流。",
+                exp1_li3: "連結英語與華語，促進跨文化團隊合作。",
+                exp2_role: "品質保證實習生", exp2_comp: "金屬家具與自行車零組件製造商",
+                exp2_li1: "在動態環境中累積製造業實務經驗。",
+                exp2_li2: "運用敏銳的分析技巧提升可靠性與效率。",
+                exp2_li3: "專注於有意義的創新與缺陷減少。",
+                title_projects: "技術創新",
+                proj1_title: "自動化缺陷檢測系統",
+                proj1_desc: "一項運用AI工具自動化模擬環境中缺陷檢測的個人專案。透過整合機器學習演算法與傳統QA方法，成功顯著減少模擬錯誤。",
+                btn_view: "查看案例研究 →", btn_read: "閱讀更多 →",
+                proj2_title: "半導體效率分析研究",
+                proj2_desc: "專注於AI與半導體製造的交集。探索推動晶片製造產業可靠性與道德技術實施的方法。",
+                title_edu: "學歷與證照",
+                edu1_degree: "資訊科技學士 (IT)", edu1_school: "國立勤益科技大學",
+                edu1_date: "預計畢業：2028年6月", edu1_label1: "相關課程：", edu1_courses: "資料結構、AI基礎、資料庫管理",
+                edu2_cert: "Gemini 學生認證", edu2_org: "Google / AI 認證",
+                edu2_desc: "展示AI與機器學習應用的基礎知識，鞏固IT概念與實際QA實施之間的橋樑。",
+                title_skills: "專業技能", skill_tech: "技術能力", skill_lang: "語言能力", skill_ind: "產業知識",
+                lang_en: "英語 (TOEIC 910)", lang_zh: "華語 (流利)", lang_trans: "技術翻譯",
+                ind_qa: "品質保證 (QA)", ind_semi: "半導體製造", ind_auto: "製程自動化",
+                title_contact: "聯絡方式", contact_sub: "讓我們一起創新",
+                contact_desc: "我目前正在尋求機會，將我的QA背景與AI知識應用於台灣的有意義專案中。",
+                contact_loc: "台灣",
+                form_name: "姓名", form_email: "電子郵件", form_msg: "訊息", form_btn: "發送訊息"
+            },
+            id: {
+                nav_about: "Tentang", nav_exp: "Pengalaman", nav_skills: "Keahlian", nav_projects: "Proyek", nav_contact: "Kontak",
+                hero_subtitle: "Spesialis Jaminan Kualitas (QA)",
+                hero_title: "Harris Kristanto",
+                hero_desc: "Mengambil inspirasi dari filosofi eksistensial untuk menghadapi tantangan dengan ket坚unan. Saya memadukan jaminan kualitas manufaktur dengan inovasi AI untuk meningkatkan keandalan dan efisiensi.",
+                btn_work: "Lihat Karya Saya", btn_contact: "Hubungi Saya",
+                title_about: "Tentang Saya",
+                about_p1: "Saya adalah spesialis jaminan kualitas yang energik berbasis di Taiwan dengan empat tahun pengalaman manufaktur. Latar belakang saya mencakup magang di komponen furnitur logam dan sepeda.",
+                about_p2: "Bersemangat tentang teknologi mutakhir, saya sangat ingin tahu bagaimana Kecerdasan Buatan (AI) dapat mengubah permainan di bidang seperti manufaktur dan semikonduktor.",
+                stat_years: "Tahun di QA & Manufaktur", stat_toeic: "Skor TOEIC (Lanjutan)",
+                title_exp: "Pengalaman", date_recent: "Terbaru", date_4years: "4 Tahun Terakhir",
+                exp1_role: "Penerjemah Freelance & Duta OCAC", exp1_comp: "Overseas Community Affairs Council (OCAC), Taiwan",
+                exp1_li1: "Melayani sebagai penerjemah lepas untuk dokumen manufaktur teknis.",
+                exp1_li2: "Terpilih sebagai duta untuk mewakili institusi kejuruan.",
+                exp1_li3: "Menjembatani bahasa Inggris dan Mandarin untuk memfasilitasi kolaborasi tim lintas budaya.",
+                exp2_role: "Spesialis Jaminan Kualitas (Magang)", exp2_comp: "Produsen Komponen Logam & Sepeda",
+                exp2_li1: "Pengalaman manufaktur langsung di lingkungan yang dinamis.",
+                exp2_li2: "Menerapkan keterampilan analitis yang tajam untuk meningkatkan keandalan.",
+                exp2_li3: "Fokus pada inovasi yang bermakna dan pengurangan cacat.",
+                title_projects: "Inovasi Teknis",
+                proj1_title: "Sistem Deteksi Cacat Otomatis",
+                proj1_desc: "Proyek pribadi yang memanfaatkan alat AI untuk mengotomatisasi deteksi cacat dalam lingkungan simulasi. Berhasil mengurangi kesalahan simulasi secara signifikan.",
+                btn_view: "Lihat Studi Kasus →", btn_read: "Baca Selengkapnya →",
+                proj2_title: "Analisis Efisiensi Semikonduktor",
+                proj2_desc: "Berfokus pada persimpangan AI dan manufaktur semikonduktor. Menjelajahi metode untuk mendorong kemajuan dalam keandalan dan implementasi teknologi etis.",
+                title_edu: "Pendidikan & Sertifikasi",
+                edu1_degree: "Sarjana Teknologi Informasi", edu1_school: "National Chin-Yi University of Technology, Taiwan",
+                edu1_date: "Perkiraan Lulus: Juni 2028", edu1_label1: "Mata Kuliah Relevan:", edu1_courses: "Struktur Data, Dasar AI, Manajemen Database",
+                edu2_cert: "Sertifikasi Siswa Gemini", edu2_org: "Sertifikasi Google / AI",
+                edu2_desc: "Menunjukkan pengetahuan dasar dalam aplikasi AI dan pembelajaran mesin, memperkuat jembatan antara konsep IT dan implementasi QA praktis.",
+                title_skills: "Keahlian", skill_tech: "Teknis", skill_lang: "Bahasa", skill_ind: "Industri",
+                lang_en: "Inggris (TOEIC 910)", lang_zh: "Mandarin (Lancar)", lang_trans: "Terjemahan Teknis",
+                ind_qa: "Jaminan Kualitas (QA)", ind_semi: "Manufaktur Semikonduktor", ind_auto: "Otomasi Proses",
+                title_contact: "Hubungi Kami", contact_sub: "Mari Berinovasi Bersama",
+                contact_desc: "Saya saat ini mencari peluang untuk menerapkan latar belakang QA dan pengetahuan AI saya pada proyek-proyek bermakna di Taiwan.",
+                contact_loc: "Taiwan",
+                form_name: "Nama", form_email: "Email", form_msg: "Pesan", form_btn: "Kirim Pesan"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            const btnLabel = lang === 'en' ? 'EN' : (lang === 'zh' ? '繁中' : 'ID');
+            document.getElementById('current-lang').textContent = btnLabel;
+            
+            // Close dropdown (optional behavior for mobile)
+            document.querySelector('.lang-content').style.display = 'none';
+            setTimeout(() => {
+                document.querySelector('.lang-content').style.display = '';
+            }, 100);
+        }
+
         // --- Theme Toggle Logic ---
         const themeToggle = document.querySelector('.theme-toggle');
         const body = document.body;
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-        // Check local storage or system preference
+        
         const currentTheme = localStorage.getItem("theme");
         if (currentTheme == "dark") {
             document.documentElement.setAttribute("data-theme", "dark");
             themeToggle.textContent = "☀️";
-        } else if (currentTheme == "light") {
+        } else {
+            // Default to Light
             document.documentElement.setAttribute("data-theme", "light");
             themeToggle.textContent = "🌙";
         }
@@ -997,19 +1171,11 @@
 
         // --- Mobile Menu Logic ---
         const mobileBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        const navActions = document.querySelector('.nav-actions');
 
         mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileBtn.textContent = '☰';
-            });
+            navActions.classList.toggle('active');
+            mobileBtn.textContent = navActions.classList.contains('active') ? '✕' : '☰';
         });
 
         // --- Intersection Observer for Fade-in Animation ---
@@ -1022,7 +1188,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1031,7 +1197,7 @@
             observer.observe(el);
         });
 
-        // --- Smooth Scroll for Anchor Links ---
+        // --- Smooth Scroll ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1041,6 +1207,9 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu on click
+                    navActions.classList.remove('active');
+                    mobileBtn.textContent = '☰';
                 }
             });
         });
